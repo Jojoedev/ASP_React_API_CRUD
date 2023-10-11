@@ -17,7 +17,7 @@ const AddProduct = ({show}) =>{
         category: category,
         sellingPrice: sellingPrice
        });
-       alert("New product was successfully created")
+       alert(`${product.name} was successfully created`)
     }
 
     
@@ -50,19 +50,19 @@ const AddProduct = ({show}) =>{
 
                
                 <label class='control-label'>Product Name</label>
-                <input type="text" class="form-control" id="Name" value={name}
+                <input type="text" autoComplete="off" class="form-control" id="Name" value={name}
                  placeholder="Enter Name"
                  onChange={((e) =>setName(e.target.value))}
                 />
 
                 <label class='control-label'>Quantity</label>
-                <input type="number" class="form-control" id="quantity" value={quantity}
+                <input type="number" autoComplete="off" class="form-control" id="quantity" value={quantity}
                  placeholder="Enter Quantity"
                  onChange={((e) =>setQuantity(e.target.value))}
                 />
 
                 <label class='control-label'>Category</label>
-                <input type="text" class="form-control" id="category" value={category}
+                <input type="text" autoComplete="off" class="form-control" id="category" value={category}
                  placeholder="Enter Category"
                  onChange={((e) =>setCategory(e.target.value))}
                 />
@@ -73,7 +73,7 @@ const AddProduct = ({show}) =>{
                 />
                 
             </div>            
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
 
         }

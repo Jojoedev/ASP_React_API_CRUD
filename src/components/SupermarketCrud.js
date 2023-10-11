@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import AddProduct from "./AddProduct";
 import {Routes, Route} from 'react-router-dom';
 import ProductList from "./ProductList";
+import UpdateItem from './UpdateItem';
+
+
 
 function SupermarketCrud() {
  
@@ -26,12 +29,12 @@ function SupermarketCrud() {
         
         </Routes>
         
-        <button onClick={ChangeLook} class="btn btn-primary"> {text? "Create" : "List"}</button>
+        <button onClick={ChangeLook} class="btn btn-primary"> {text? "Go to Create" : "Go to List / Edit"}</button>
         <br></br>
 
         < ProductList look = {changeUi} />
         <AddProduct show = {changeUi} />
-
+        
 
       </div>
     );
