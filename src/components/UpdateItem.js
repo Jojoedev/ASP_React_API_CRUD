@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const UpdateItem = ({look, updateProduct}) =>{
@@ -18,6 +18,7 @@ async function onSubmit(e) {
 
     updateProduct({upName, qty, upCategory, upPrice})
 }
+
 
 
 

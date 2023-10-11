@@ -22,7 +22,7 @@ function SupermarketCrud() {
 
     return (
       <div className='header'>
-        <h3>Supermarket </h3>
+        <h3>Supermarket Product List </h3>
         
       <br></br>
         <Routes>

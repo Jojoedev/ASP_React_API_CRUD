@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import UpdateItem from "./UpdateItem";
+import { useFetcher } from "react-router-dom";
 
 const ProductList = ({ look }) =>{
-    const [Products, setProduct] = useState([])
+    
+  const [Products, setProduct] = useState([])
 
 
     async function LoadList() {
@@ -12,13 +14,18 @@ const ProductList = ({ look }) =>{
         console.log(response.data);
     }
 
+
+
    // console.log(Products)
    // useEffect((LoadList) =>{
     //},[]); 
 
     useEffect(() => {
-        (async () => await LoadList())();
-      }, []);
+      (async () => await LoadList())();
+    }, []);
+
+    
+
 
   async function DeleteItem(id){
   
@@ -44,15 +51,18 @@ const ProductList = ({ look }) =>{
    setPrice(product.sellingPrice) 
    setId(product.id)
   console.log(product.id)
-
-  
 }
 
   
 async function onSubmit(e) { 
- e.preventDefault() 
- 
- console.log(Products.find((product) => product.id === id).id || id )
+ e.preventDefault() //This prevents posting form to the browser
+ if(!name || !quantity || !category || !sellingPrice){
+  alert("Update all fields")
+  return;
+ }
+
+
+ console.log(Products.find((product) => product.id === id).id || id ) //This was used for checking correctness of url
 try {
   await axios.put("https://localhost:7009/api/items/id?id="+Products.find((product) => product.id === id).id,
   {
@@ -76,6 +86,34 @@ try {
 
 }
  
+{/* 
+
+const async onSubmit = (e) =>{
+ e.preventDefault()
+try{
+    axios.put("https//localhost:7000/api/items/id?id="+Array.find((item) => item.id ===id).id || id),{
+      id: id, //Properties must be same as the properties used at creation of the object. This must also align with
+      name: name, //the properties in the Server.
+      age: age,
+      localGovt: localGovt
+    });
+    alert("Item has been updated successfully")
+    
+
+}catch((error) => {
+  console.log(error)
+}
+
+}
+
+
+
+*/}
+
+
+
+
+
  
  return(
   <div>
@@ -107,6 +145,7 @@ try {
          </tbody>
          </table>
        {look &&  <div>  
+        <h4>Update Form</h4>
             <form class="form-group"> 
             <label>Name</label>
             <input class="form-control" type="text" value={name} onChange={((e) => setName(e.target.value) )} placeholder="Enter Name" />
